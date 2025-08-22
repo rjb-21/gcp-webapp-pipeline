@@ -8,17 +8,16 @@ pipeline {
         IMAGE = "hello-node-app"
     }
 
-    stage('GCP Auth') {
-    steps {
-        withCredentials([file(credentialsId: 'gcp-sa-key', variable: 'GOOGLE_APPLICATION_CREDENTIALS')]) {
-            sh 'gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS'
-            sh 'gcloud config set project webapp-pipeline-project'
-        }
-    }
-}
-
-
     stages {
+        stage('GCP Auth') {
+            steps {
+                withCredentials([file(credentialsId: 'gcp-sa-key', variable: 'GOOGLE_APPLICATION_CREDENTIALS')]) {
+                sh 'gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS'
+                sh 'gcloud config set project webapp-pipeline-project'
+                }
+            }
+        }
+
         stage('Checkout') {
             steps {
                 git branch: 'main', url: 'https://github.com/rjb-21/WebApp_Pipeline.git'
