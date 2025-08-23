@@ -43,7 +43,10 @@ pipeline {
 
         stage('Connect to GKE') {
             steps {
-                sh "gcloud container clusters get-credentials my-cluster --region us-central1 --project $PROJECT_ID"
+                sh ''' "gcloud container clusters get-credentials my-cluster --region us-central1 --project $PROJECT_ID"
+                export USE_GKE_GCLOUD_AUTH_PLUGIN=True
+                '''
+
             }
         }
 
