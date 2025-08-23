@@ -16,4 +16,4 @@ spec:
       - name: hello-node
         image: us-central1-docker.pkg.dev/webapp-pipeline-project/app-repo/hello-node-app:latest
         ports:
-        - containerPort: 8080
+        - containerPort: 3000
