@@ -7,6 +7,6 @@ app.get('/', (req, res) => {
   res.send('Hello World from DevOps project!');
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server running on port ${PORT}`);
 });
